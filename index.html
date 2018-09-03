@@ -8,9 +8,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="JS/perros.js"></script>
         <title>Mis Perros Favoritos</title>
     </header>
     <body>
@@ -19,12 +21,30 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Mis Perros</a>
                 </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Blacky</a></li>
-                        <li><a href="#">Brownie</a></li>
-                        <li><a href="#">Jumper</a></li>
-                    </ul>
-                </div>
-            </nav>
+                <ul class="nav navbar-nav">
+                    <button id="liBlacky" type="button" class="btn btn-link navbar-btn">Blacky</button>
+                    <button id="liBrownie" type="button" class="btn btn-link navbar-btn">Brownie</button>
+                    <button id="liJumper" type="button" class="btn btn-link navbar-btn">Jumper</button>
+                    <button id="liFamilia" type="button" class="btn btn-link navbar-btn">Perros de Familia</button>
+                    <button id="liAmigos" type="button" class="btn btn-link navbar-btn">Perros de Amigos</button>
+                </ul>
+            </div>
+         </nav>
+         <div id="divBlacky" class="visible text-center">
+             <h1>Blacky</h1>
+         </div>
+         <div id="divBrownie" class="invisible text-center">
+            <h1>Brownie</h1>
+         </div>
+         <div id="divJumper" class="invisible text-center">
+            <h1>Jumper</h1>
+        </div>
+        <div id="divFamilia" class="invisible text-center">
+            <h1>Perros de Familia</h1>
+        </div>
+        <div id="divAmigo" class="invisible text-center">
+            <h1>Perros de Amigos</h1>
+        </div>
+        
     </body>
 </HTML>
