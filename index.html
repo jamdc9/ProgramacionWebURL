@@ -12,11 +12,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/StyleSheet.css">
         <script src="JS/perros.js"></script>
         <title>Mis Perros Favoritos</title>
     </header>
     <body>
-        <nav class="navbar navbar-inverse">
+        <!--<nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Mis Perros</a>
@@ -29,22 +30,39 @@
                     <button id="liAmigos" type="button" class="btn btn-link navbar-btn">Perros de Amigos</button>
                 </ul>
             </div>
-         </nav>
-         <div id="divBlacky" class="visible text-center">
-             <h1>Blacky</h1>
-         </div>
-         <div id="divBrownie" class="invisible text-center">
-            <h1>Brownie</h1>
-         </div>
-         <div id="divJumper" class="invisible text-center">
-            <h1>Jumper</h1>
+         </nav>-->
+         <a class="menu-bar" data-toggle="collapse" href="#menu">
+                <span class="bars"></span>            
+            </a>
+        <div class="collapse menu" id="menu">
+            <ul class="list-inline">
+                <button id="liBlacky" type="button" class="btn btn-primary navbar-btn">Blacky</button>
+                <button id="liBrownie" type="button" class="btn btn-secondary navbar-btn">Brownie</button>
+                <button id="liJumper" type="button" class="btn btn-secondary navbar-btn">Jumper</button>
+                <button id="liFamilia" type="button" class="btn btn-secondary navbar-btn">Perros de Familia</button>
+                <button id="liAmigos" type="button" class="btn btn-secondary navbar-btn">Perros de Amigos</button>
+            </ul> 
         </div>
-        <div id="divFamilia" class="invisible text-center">
-            <h1>Perros de Familia</h1>
+        <div class="container">
+                <div class="row">
+                <div id="divBlacky" class="visible text-center">
+                        <h1>Blacky</h1>
+                    </div>
+                    <div id="divBrownie" class="invisible text-center">
+                       <h1>Brownie</h1>
+                    </div>
+                    <div id="divJumper" class="invisible text-center">
+                       <h1>Jumper</h1>
+                   </div>
+                   <div id="divFamilia" class="invisible text-center">
+                       <h1>Perros de Familia</h1>
+                   </div>
+                   <div id="divAmigo" class="invisible text-center">
+                       <h1>Perros de Amigos</h1>
+                   </div>
+                   </div>
         </div>
-        <div id="divAmigo" class="invisible text-center">
-            <h1>Perros de Amigos</h1>
-        </div>
+         
         
     </body>
 </HTML>
