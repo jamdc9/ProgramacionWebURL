@@ -20,6 +20,8 @@ $(document).ready(function(){
     $("#divJumper").css('display', 'none');
     $("#divFamilia").css('display', 'none');
     $("#divAmigos").css('display', 'none');
+    $("#divPrincipal").css('background-color', 'Brown');
+    $("#divPrincipal").css('color', 'white');
     /*Cambiamos los botones*/
     $("#btBrownie").attr('class', 'btn btn-primary navbar-btn');
     $("#btBlacky").attr('class', 'btn btn-secondary navbar-btn');
@@ -42,6 +44,8 @@ $(document).ready(function(){
     $("#divJumper").css('display', 'none');
     $("#divFamilia").css('display', 'none');
     $("#divAmigos").css('display', 'none');
+    $("#divPrincipal").css('background-color', 'Black');
+    $("#divPrincipal").css('color', 'white');
     /*Cambiamos los botones*/ 
     $("#btBlacky").attr('class', 'btn btn-primary navbar-btn');
     $("#btBrownie").attr('class', 'btn btn-secondary navbar-btn');
@@ -63,6 +67,9 @@ $(document).ready(function(){
     $("#divJumper").css('display', 'block');
     $("#divFamilia").css('display', 'none');
     $("#divAmigos").css('display', 'none');
+    $("#divPrincipal").css('background-color', 'Yellow');
+    $("#divPrincipal").css('color', 'Black');
+
     /*Cambiamos los botones*/ 
     $("#btBlacky").attr('class', 'btn btn-secondary navbar-btn');
     $("#btBrownie").attr('class', 'btn btn-secondary navbar-btn');
@@ -84,6 +91,8 @@ $(document).ready(function(){
     $("#divJumper").css('display', 'none');
     $("#divFamilia").css('display', 'block');
     $("#divAmigos").css('display', 'none');
+    $("#divPrincipal").css('background-color', 'Gray');
+    $("#divPrincipal").css('color', 'Black');
     /*Cambiamos los botones*/ 
     $("#btBlacky").attr('class', 'btn btn-secondary navbar-btn');
     $("#btBrownie").attr('class', 'btn btn-secondary navbar-btn');
@@ -105,6 +114,8 @@ $(document).ready(function(){
     $("#divJumper").css('display', 'none');
     $("#divFamilia").css('display', 'none');
     $("#divAmigos").css('display', 'block');
+    $("#divPrincipal").css('background-color', 'Blue');
+    $("#divPrincipal").css('color', 'White');
     /*Cambiamos los botones*/ 
     $("#btBlacky").attr('class', 'btn btn-secondary navbar-btn');
     $("#btBrownie").attr('class', 'btn btn-secondary navbar-btn');

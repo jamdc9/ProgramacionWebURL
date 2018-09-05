@@ -17,23 +17,10 @@
         <title>Mis Perros Favoritos</title>
     </header>
     <body>
-        <!--<nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Mis Perros</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <button id="liBlacky" type="button" class="btn btn-link navbar-btn">Blacky</button>
-                    <button id="liBrownie" type="button" class="btn btn-link navbar-btn">Brownie</button>
-                    <button id="liJumper" type="button" class="btn btn-link navbar-btn">Jumper</button>
-                    <button id="liFamilia" type="button" class="btn btn-link navbar-btn">Perros de Familia</button>
-                    <button id="liAmigos" type="button" class="btn btn-link navbar-btn">Perros de Amigos</button>
-                </ul>
-            </div>
-         </nav>-->
-         <a class="menu-bar" data-toggle="collapse" href="#menu">
-                <span class="bars"></span>            
-            </a>
+        
+        <a class="menu-bar" data-toggle="collapse" href="#menu">
+            <span class="bars"></span>            
+        </a>
         <div class="collapse menu" id="menu">
             <ul class="list-inline">
                 <button id="btBlacky" type="button" class="btn btn-primary navbar-btn">Blacky</button>
@@ -43,26 +30,138 @@
                 <button id="btAmigos" type="button" class="btn btn-secondary navbar-btn">Perros de Amigos</button>
             </ul> 
         </div>
-        <div class="container">
-                <div class="row">
+        <br/>
+        <div id="divPrincipal" class="container back">
+            <div class="row">
+                <!--Blacky-->
                 <div id="divBlacky" class="visible text-center">
-                        <h1>Blacky</h1>
+                    <h1>Blacky</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 text-justify">
+                                <p>
+                                    Blacky era un perro muy activo, a pesar de su corto tamaño el no permitia que nada 
+                                    lo detuviera a ser feliz. Blacky era muy activo, le gustaba pasear en el barranco,
+                                    el vivió por 12 años en los que paso por muchos buenos y malos momentos y siempre
+                                    será recordado por su familia. 
+                                </p>
+                                <p>
+                                    En sus primeros años de vida Blacky estuvo solo hasta que llegó Brownie (en la siguiente página
+                                    está la información de brownie), causando en él muchos celos al ya no ser el único perro en casa,
+                                    pero a pesar de esos celos lo acepto muy rapido y se volvieron amigos inseparables. 
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="img/Blacky/blackybrownie.jpg" class="img-responsive" alt="Cinque Terre"> 
+                            </div>
+                        </div>
                     </div>
-                    <div id="divBrownie" class="invisible text-center">
-                       <h1>Brownie</h1>
+                </div>
+                <!--Brownie-->
+                <div id="divBrownie" class="invisible ocultar text-center">
+                    <h1>Brownie</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 text-justify">
+                                <p>
+
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="img/Blacky/Brownie.jpg" class="img-responsive" alt="Cinque Terre"> 
+                            </div>
+                        </div>
                     </div>
-                    <div id="divJumper" class="invisible text-center">
-                       <h1>Jumper</h1>
-                   </div>
-                   <div id="divFamilia" class="invisible text-center">
-                       <h1>Perros de Familia</h1>
-                   </div>
-                   <div id="divAmigos" class="invisible text-center">
-                       <h1>Perros de Amigos</h1>
-                   </div>
-                   </div>
+                </div>
+                <!--Jumper-->
+                <div id="divJumper" class="invisible ocultar text-center">
+                    <h1>Jumper</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 text-justify">
+                                <p>
+
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="img/Blacky/Jumper.jpeg" class="img-responsive" alt="Cinque Terre"> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Familia-->
+                <div id="divFamilia" class="invisible ocultar text-center">
+                    <h1>Perros de Familia</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 text-justify">
+                                <h1>Guardia</h1>
+                                <p>
+
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="img/Blacky/Guardia.jpeg" class="img-responsive" alt="Cinque Terre"> 
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="img/Blacky/Nina.jpeg" class="img-responsive" alt="Cinque Terre">
+                                </div>
+                                <div class="col-lg-6 text-justify">
+                                    <h1>Nina</h1>
+                                    <p>
+
+                                    </p> 
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!--Amigos-->
+                <div id="divAmigos" class="invisible ocultar text-center">
+                    <h1>Perros de Amigos</h1>
+                    <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 text-justify">
+                                    <h1>Loba</h1>
+                                    <p>
+    
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <img src="img/Blacky/LOBA.jpg" class="img-responsive imagenPerros" alt="Cinque Terre"> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img src="img/Blacky/Mushu.jpeg" class="img-responsive imagenPerros" alt="Cinque Terre">
+                                </div>
+                                <div class="col-lg-6 text-justify">
+                                    <h1>Mushu</h1>
+                                    <p>
+
+                                    </p> 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 text-justify">
+                                    <h1>Winnie</h1>
+                                    <p>
+    
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <img src="img/Blacky/Winnie.jpeg" class="img-responsive imagenPerros" alt="Cinque Terre"> 
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
         </div>
-         
-        
     </body>
+    <footer>
+        <div id="divFamilia" class="text-center">
+            Creado por: Julio Mejia 
+        </div>
+    </footer>
 </HTML>
