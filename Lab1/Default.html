@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Laboratorio 1</title>
+  <link href="Scripts/bootstrap.css" rel="stylesheet" />
+  <script src="Scripts/jquery-1.11.0.min.js"></script>
+  <script src="Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-6">
+            <h2>Laboratorio 1</h2>
+        </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-primary">
+            <div class="panel-heading">
+                Informaci&oacute;n
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                <label for="nombre">
+                    Nombre
+                </label>
+                <input type="text"
+                        class="form-control"
+                        value="Nombre de ejemplo"
+                        id="nombre" />
+                </div>
+                
+                <div class="form-group">
+                <label for="desc">
+                    Descripci&oacute;n
+                </label>
+                <input type="text"
+                        class="form-control"
+                        value="Descripci&oacute;n de ejemplo"
+                        id="desc" />
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" id="btActualizar"
+                            class="btn btn-primary"
+                            onclick="productUpdate();">
+                    Agregar
+                    </button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+            <table id="productTable" 
+                    class="table table-bordered table-condensed table-striped">
+            <thead>
+                <tr>
+                <th>Editar</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripci&oacute;n</th>
+                <th>Delete</th>
+                </tr>
+            </thead>
+            </table>
+        </div>
+        </div>
+    </div>
+    <script>
+        // Next id for adding a new Product
+        var nextId = 1;
+        // ID of Product currently editing
+        var activeId = 0;
+    
+        function muestraRegistro(ctl) {
+        var row = $(ctl).parents("tr");
+        var cols = row.children("td");
+    
+        activeId = $($(cols[0]).children("button")[0]).data("id");
+        $("#nombre").val($(cols[2]).text());
+        $("#desc").val($(cols[3]).text());
+    
+        // Change Update Button Text
+        $("#btActualizar").text("Editar");
+        }
+    
+        function productUpdate() {
+        if ($("#btActualizar").text() == "Editar") {
+            actualizaRegistroTabla(activeId);
+        }
+        else {
+            agregarRegistro();
+        }
+    
+        // Clear form fields
+        formClear();
+    
+        // Focus to product name field
+        $("#productname").focus();
+        }
+    
+        // Add product to <table>
+        function agregarRegistro() {
+        // First check if a <tbody> tag exists, add one if not
+        if ($("#productTable tbody").length == 0) {
+            $("#productTable").append("<tbody></tbody>");
+        }
+    
+        // Append product to table
+        $("#productTable tbody").append(
+            registroTr(nextId));
+    
+        // Increment next ID to use
+        nextId += 1;
+        }
+    
+        // Update product in <table>
+        function actualizaRegistroTabla(id) {
+        // Find Product in <table>
+        var row = $("#productTable button[data-id='" + id + "']")
+                    .parents("tr")[0];
+    
+        // Add changed product to table
+        $(row).after(registroTr(id));
+        // Remove original product
+        $(row).remove();
+    
+        // Clear form fields
+        formClear();
+    
+        // Change Update Button Text
+        $("#btActualizar").text("Agregar");
+        }
+    
+        // Build a <table> row of Product data
+        function registroTr(id) {
+        var ret =
+        "<tr>" +
+            "<td>" +
+            "<button type='button' " +
+                    "onclick='muestraRegistro(this);' " +
+                    "class='btn btn-default' " +
+                    "data-id='" + id + "'>" +
+                    "Editar" +
+            "</button>" +
+            "</td>" +
+            "<td>" + id + "</td>" +
+            "<td>" + $("#nombre").val() + "</td>" +
+            "<td>" + $("#desc").val() + "</td>" +
+            "<td>" +
+            "<button type='button' " +
+                    "onclick='eliminaRegistro(this);' " +
+                    "class='btn btn-default' " +
+                    "data-id='" + id + "'>" +
+                    "Eliminar" +
+            "</button>" +
+            "</td>" +
+        "</tr>"
+    
+        return ret;
+        }
+    
+        // Delete product from <table>
+        function eliminaRegistro(ctl) {
+        $(ctl).parents("tr").remove();
+        }
+    
+        // Clear form fields
+        function formClear() {
+        $("#nombre").val("");
+        $("#desc").val("");
+        }
+    </script>
+    </body>
+</html>
