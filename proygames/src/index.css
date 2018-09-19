@@ -3,6 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-image: url('https://c.wallhere.com/photos/82/32/video_games_Grey_Fox_Metal_Gear_Solid_black_background_simple_background_ninjas_cyborg-193437.jpg!d');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 h1, li, .title {
   font-family: 'Mina';
