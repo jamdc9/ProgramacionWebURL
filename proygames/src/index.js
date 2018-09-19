@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.css'; 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,7 @@ import {PanelGroup,Panel,Button,ButtonToolbar,ListGroup,ListGroupItem} from 'rea
 
 class VideoGames extends React.Component {
     constructor(props) {
-      super(props);
+      super(props); 
       this.state = {
         juegos: [
           {name: "Spiderman", consolas: ["PS2", "PS3", "PS4"]},
