@@ -11,7 +11,7 @@ import { Card, CardHeader, CardBody, CardFooter, ImageHeader } from "react-simpl
 class VideoGames extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { 
             juegos: [
                 { name: "Spiderman", consolas: ["PS2", "PS3", "PS4"], comentario: ["Sin jugarlo."], avatar: "https://img.game.co.uk/ml2/5/6/2/9/562944_scr9_a.png" },
                 { name: "God of War", consolas: ["PS3", "PS4", "PSVita"], comentario: ["Muy buen juego."], avatar: "https://i.blogs.es/7548d0/god-of-war-2018-gameinformer/450_1000.jpg" },
