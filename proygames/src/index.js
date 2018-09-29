@@ -8,10 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { PanelGroup, Panel, Button, ButtonToolbar, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
 import { CardGroup, CardTitle, CardText } from 'reactstrap';
 import { Card, CardHeader, CardBody, CardFooter, ImageHeader } from "react-simple-card";
+
+import {AddJuego} from './components/addjuego';
+
+
 class VideoGames extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             juegos: [
                 { name: "Spiderman", consolas: ["PS2", "PS3", "PS4"], comentario: ["Sin jugarlo."], avatar: "https://img.game.co.uk/ml2/5/6/2/9/562944_scr9_a.png" },
                 { name: "God of War", consolas: ["PS3", "PS4", "PSVita"], comentario: ["Muy buen juego."], avatar: "https://i.blogs.es/7548d0/god-of-war-2018-gameinformer/450_1000.jpg" },
@@ -20,14 +24,28 @@ class VideoGames extends React.Component {
                 { name: "Mario Sunshine", consolas: ["Nintendo Game Cube"], comentario: ["El mejor de Mario"], avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStaF3aV8CzgtAjdgEjIGH6fPDgr6IsaqY1lRQ033Xze7OR9mz5" },
                 { name: "Age of Empires 2", consolas: ["PC"], comentario: ["Un clasico"], avatar: "https://i.ytimg.com/vi/Si6QPKiNoDY/maxresdefault.jpg" },
                 { name: "Mario Kart", consolas: ["Todas las consolas de Nintendo despues del NES"], comentario: ["Pierde Amigos"], avatar: "https://vignette.wikia.nocookie.net/mariokart/images/7/7e/Mario-kart-double-dash-1.jpg/revision/latest?cb=20140521140749&path-prefix=es" }
-            ]
+            ],
+            showAdd: false
         };
+        this.showAddModal = this.showAddModal.bind(this);
+        this.addJuego = this.addJuego.bind(this);
+    }
+    showAddModal() {//show the new recipe modal
+        this.setState({ showAdd: !this.state.showAdd });
+    }
+    addJuego(juego) {//create a new recipe
+        let juegos = this.state.juegos;
+        juegos.push(juego);
+        this.setState({ juegos: juegos });
+        this.showAddModal();
     }
     render() {
         const juegos = this.state.juegos;
         return (
             <div className="jumbotron">
                 <h1>Juegos (actualmente solo muestra)</h1>
+                <Button bsStyle="primary"  onClick={this.showAddModal}>Agregar Juegos</Button>
+                <AddJuego  onShow={this.state.showAdd} onAdd={this.addJuego} onAddModal={this.showAddModal}/>
                 <div id="juegos" className="text-center">
                     <div className="row">
                         {juegos.map((juego, index) => (
@@ -50,7 +68,6 @@ class VideoGames extends React.Component {
                         ))}
                     </div>
                 </div>
-                <Button bsStyle="primary">Agregar Juegos</Button>
             </div>
         );
     }
