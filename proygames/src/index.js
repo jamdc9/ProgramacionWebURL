@@ -9,8 +9,8 @@ import { PanelGroup, Panel, Button, ButtonToolbar, ListGroup, ListGroupItem, Ima
 import { CardGroup, CardTitle, CardText } from 'reactstrap';
 import { Card, CardHeader, CardBody, CardFooter, ImageHeader } from "react-simple-card";
 
-import {AddJuego} from './components/addjuego';
-
+import { AddJuego } from './components/addjuego';
+import { EditJuego } from './components/editjuego';
 
 class VideoGames extends React.Component {
     constructor(props) {
@@ -25,11 +25,16 @@ class VideoGames extends React.Component {
                 { name: "Age of Empires 2", consolas: ["PC"], comentario: ["Un clasico"], avatar: "https://i.ytimg.com/vi/Si6QPKiNoDY/maxresdefault.jpg" },
                 { name: "Mario Kart", consolas: ["Todas las consolas de Nintendo despues del NES"], comentario: ["Pierde Amigos"], avatar: "https://vignette.wikia.nocookie.net/mariokart/images/7/7e/Mario-kart-double-dash-1.jpg/revision/latest?cb=20140521140749&path-prefix=es" }
             ],
-            showAdd: false
+            showAdd: false,
+            showEdit: false,
+            currentlyEditing: 0
         };
         this.showAddModal = this.showAddModal.bind(this);
+        this.showEditModal = this.showEditModal.bind(this);
         this.addJuego = this.addJuego.bind(this);
+        this.editJuego = this.editJuego.bind(this);
     }
+    //ADD
     showAddModal() {//show the new recipe modal
         this.setState({ showAdd: !this.state.showAdd });
     }
@@ -39,13 +44,24 @@ class VideoGames extends React.Component {
         this.setState({ juegos: juegos });
         this.showAddModal();
     }
+    //EDIT
+    showEditModal(index) {//show the edit recipe modal
+        this.setState({ showEdit: !this.state.showEdit, currentlyEditing: index });
+    }
+    editJuego(newName, newConsolas, newComentario
+        , newAvatar, currentlyEditing) {//edit an existing recipe
+        let juegos = this.state.juegos;
+        juegos[currentlyEditing] = { name: newName, consolas: newConsolas, avatar: newAvatar, comentario: newComentario };
+        this.setState({ juegos: juegos });
+        this.showEditModal(currentlyEditing);
+    }
     render() {
         const juegos = this.state.juegos;
         return (
             <div className="jumbotron">
                 <h1>Juegos (actualmente solo muestra)</h1>
-                <Button bsStyle="primary"  onClick={this.showAddModal}>Agregar Juegos</Button>
-                <AddJuego  onShow={this.state.showAdd} onAdd={this.addJuego} onAddModal={this.showAddModal}/>
+                <Button bsStyle="primary" onClick={this.showAddModal}>Agregar Juegos</Button>
+                <AddJuego onShow={this.state.showAdd} onAdd={this.addJuego} onAddModal={this.showAddModal} />
                 <div id="juegos" className="text-center">
                     <div className="row">
                         {juegos.map((juego, index) => (
@@ -59,11 +75,12 @@ class VideoGames extends React.Component {
                                         ))}
                                     </CardText>
                                     <ButtonToolbar>
-                                        <Button bsStyle="warning">Edit</Button>
+                                        <Button bsStyle="warning"  onClick={() => {this.showEditModal(index)}}>Edit</Button>
                                         <Button bsStyle="danger">Delete</Button>
+                                        
                                     </ButtonToolbar>
                                 </CardBody>
-
+                                <EditJuego onShow={this.state.showEdit} onEdit={this.editJuego} onEditModal={() => {this.showEditModal(this.state.currentlyEditing)}} currentlyEditing={this.state.currentlyEditing} juego={juegos[this.state.currentlyEditing]} />
                             </Card>
                         ))}
                     </div>
