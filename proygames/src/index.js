@@ -33,6 +33,7 @@ class VideoGames extends React.Component {
         this.showEditModal = this.showEditModal.bind(this);
         this.addJuego = this.addJuego.bind(this);
         this.editJuego = this.editJuego.bind(this);
+        this.deleteJuego = this.deleteJuego.bind(this);
     }
     //ADD
     showAddModal() {//show the new recipe modal
@@ -55,6 +56,12 @@ class VideoGames extends React.Component {
         this.setState({ juegos: juegos });
         this.showEditModal(currentlyEditing);
     }
+    //Delete
+    deleteJuego(index) {//delete an existing recipe
+        let juegos = this.state.juegos.slice();
+        juegos.splice(index, 1);
+        this.setState({ juegos: juegos, currentlyEditing: 0 });
+    }
     render() {
         const juegos = this.state.juegos;
         return (
@@ -75,12 +82,12 @@ class VideoGames extends React.Component {
                                         ))}
                                     </CardText>
                                     <ButtonToolbar>
-                                        <Button bsStyle="warning"  onClick={() => {this.showEditModal(index)}}>Edit</Button>
-                                        <Button bsStyle="danger">Delete</Button>
-                                        
+                                        <Button bsStyle="warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
+                                        <Button bsStyle="danger" onClick={() => {this.deleteJuego(index)}}>Delete</Button>
+
                                     </ButtonToolbar>
                                 </CardBody>
-                                <EditJuego onShow={this.state.showEdit} onEdit={this.editJuego} onEditModal={() => {this.showEditModal(this.state.currentlyEditing)}} currentlyEditing={this.state.currentlyEditing} juego={juegos[this.state.currentlyEditing]} />
+                                <EditJuego onShow={this.state.showEdit} onEdit={this.editJuego} onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }} currentlyEditing={this.state.currentlyEditing} juego={juegos[this.state.currentlyEditing]} />
                             </Card>
                         ))}
                     </div>
