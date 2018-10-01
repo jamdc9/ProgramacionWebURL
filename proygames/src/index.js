@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+/*import App from './App';
+import registerServiceWorker from './registerServiceWorker';*/
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { PanelGroup, Panel, Button, ButtonToolbar, ListGroup, ListGroupItem, Image } from 'react-bootstrap';
-import { CardGroup, CardTitle, CardText } from 'reactstrap';
-import { Card, CardHeader, CardBody, CardFooter, ImageHeader } from "react-simple-card";
+import { Button } from 'react-bootstrap';
+import { ImageHeader } from "react-simple-card";
 
 import { AddJuego } from './components/addjuego';
 import { EditJuego } from './components/editjuego';
@@ -74,45 +73,43 @@ class VideoGames extends React.Component {
         const juegos = this.state.juegos;
         return (
             <div className="jumbotron">
-                <h1>Juegos (CRUD / Local Storage)</h1>
-                <div className="text-center">
-                    <Button className="btn btn-outline-primary" onClick={this.showAddModal}>Agregar Juegos</Button>
+
+                <div class="title">
+                    <div class="title-word">Juegos</div>
+                    <div class="title-word">CRUD</div>
+                    <div class="title-word">Local Storage</div>
+                    <div class="title-word"><Button className="btn btn-outline-primary widthcien" onClick={this.showAddModal}>Agregar Juegos</Button></div>
                 </div>
+                
                 <br />
                 <AddJuego onShow={this.state.showAdd} onAdd={this.addJuego} onAddModal={this.showAddModal} />
                 <div id="juegos" className="text-center">
-                    <div className="row">
-                        {juegos.map((juego, index) => (
-                            <div className="col-xs-12 col-sm-6 col-md-4" key={index}>
-                                <div className="image-flip" ontouchstart="this.classList.toggle('hover');">
-                                    <div className="mainflip">
-                                        <div className="frontside">
-                                            <div className="card">
-                                                <div className="card-body text-center">
-                                                    <ImageHeader imageSrc={juego.avatar} data-toggle="tooltip" data-placement="bottom" title={juego.comentario} />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="backside">
-                                            <div className="card">
-                                                <div className="card-body text-center mt-4">
-                                                    <h4 className="card-title">{juego.name}</h4>
-                                                    <p className="card-text">{juego.comentario}</p>
-                                                    {juego.consolas.map((consola, index) => (
-                                                        <ListGroupItem key={index} >{consola}</ListGroupItem>
-                                                    ))}
-                                                    <ButtonToolbar>
-                                                        <Button className="btn btn-outline-warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
-                                                        <Button className="btn btn-outline-danger" onClick={() => { this.deleteJuego(index) }}>Delete</Button>
 
-                                                    </ButtonToolbar>
-                                                </div>
+                    <div className="row mt-30">
+                        {juegos.map((juego, index) => (
+                            <div className="col-xs-12 col-sm-6 col-md-6" key={index}>
+                                <div className="box3" >
+                                    <ImageHeader imageSrc={juego.avatar} data-toggle="tooltip" data-placement="bottom" title={juego.comentario} />
+                                    <div className="box-content">
+                                        <div className="card">
+
+                                            <h1 className="title backTitulo" >{juego.name}</h1>
+                                            <span className="post backTitulo">{juego.comentario}</span>
+                                            <div className="row">
+                                                {juego.consolas.map((consola, index) => (
+                                                    <div className="col-md-6" key={index}>
+                                                        <h2>{consola}</h2>
+                                                    </div>
+                                                ))}
                                             </div>
+
+                                            <Button className="btn btn-warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
+                                            <Button className="btn btn-danger" onClick={() => { this.deleteJuego(index) }}>Delete</Button>
+
                                         </div>
                                     </div>
-                                    <EditJuego onShow={this.state.showEdit} onEdit={this.editJuego} onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }} currentlyEditing={this.state.currentlyEditing} juego={juegos[this.state.currentlyEditing]} />
                                 </div>
-
+                                <EditJuego onShow={this.state.showEdit} onEdit={this.editJuego} onEditModal={() => { this.showEditModal(this.state.currentlyEditing) }} currentlyEditing={this.state.currentlyEditing} juego={juegos[this.state.currentlyEditing]} />
                             </div>
                         ))}
                     </div>
