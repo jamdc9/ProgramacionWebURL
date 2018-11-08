@@ -16,6 +16,11 @@ class VideoGames extends React.Component {
         super(props);
         this.state = {
             juegos: [],
+            id:0,
+            name: "",
+            consolas: "",
+            comentario: [],
+            avatar: "",
             showAdd: false,
             showEdit: false,
             currentlyEditing: 0
@@ -28,7 +33,7 @@ class VideoGames extends React.Component {
     }
     //LocalStorage
     componentDidMount() {//load the local storage data after the component renders
-        var juegos = (typeof localStorage["juegos"] !== "undefined") ? JSON.parse(localStorage.getItem("juegos")) : [
+        /*var juegos = (typeof localStorage["juegos"] !== "undefined") ? JSON.parse(localStorage.getItem("juegos")) : [
             { name: "Spiderman", consolas: ["PS2", "PS3", "PS4"], comentario: ["Sin jugarlo."], avatar: "https://img.game.co.uk/ml2/5/6/2/9/562944_scr9_a.png" },
             { name: "God of War", consolas: ["PS3", "PS4", "PSVita"], comentario: ["Muy buen juego."], avatar: "https://i.blogs.es/7548d0/god-of-war-2018-gameinformer/450_1000.jpg" },
             { name: "Pokemon", consolas: ["Game Boy Color", "Game Boy Advance", "Nintendo Game Cube", "Nintendo Wii"], comentario: ["Buenos Juegos"], avatar: "https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/gamecube_12/SI_GCN_PokemonColosseum_image1600w.jpg" },
@@ -37,7 +42,15 @@ class VideoGames extends React.Component {
             { name: "Age of Empires 2", consolas: ["PC"], comentario: ["Un clasico"], avatar: "https://i.ytimg.com/vi/Si6QPKiNoDY/maxresdefault.jpg" },
             { name: "Mario Kart", consolas: ["Todas las consolas de Nintendo despues del NES"], comentario: ["Pierde Amigos"], avatar: "https://vignette.wikia.nocookie.net/mariokart/images/7/7e/Mario-kart-double-dash-1.jpg/revision/latest?cb=20140521140749&path-prefix=es" }
         ];
-        this.setState({ juegos: juegos });
+        this.setState({ juegos: juegos });*/
+        var url = "http://localhost:9090/api/juegos"
+        fetch(url)
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    juegos: json.juegos
+                })
+            })
     }
     //ADD
     showAddModal() {//show the new recipe modal
@@ -71,16 +84,17 @@ class VideoGames extends React.Component {
     }
     render() {
         const juegos = this.state.juegos;
+
         return (
             <div className="jumbotron">
 
-                <div class="title">
-                    <div class="title-word">Juegos</div>
-                    <div class="title-word">CRUD</div>
-                    <div class="title-word">Local Storage</div>
-                    <div class="title-word"><Button className="btn btn-outline-primary widthcien" onClick={this.showAddModal}>Agregar Juegos</Button></div>
+                <div className="title">
+                    <div className="title-word">Juegos</div>
+                    <div className="title-word">CRUD</div>
+                    <div className="title-word">Local Storage</div>
+                    <div className="title-word"><Button className="btn btn-outline-primary widthcien" onClick={this.showAddModal}>Agregar Juegos</Button></div>
                 </div>
-                
+
                 <br />
                 <AddJuego onShow={this.state.showAdd} onAdd={this.addJuego} onAddModal={this.showAddModal} />
                 <div id="juegos" className="text-center">
@@ -96,11 +110,15 @@ class VideoGames extends React.Component {
                                             <h1 className="title backTitulo" >{juego.name}</h1>
                                             <span className="post backTitulo">{juego.comentario}</span>
                                             <div className="row">
-                                                {juego.consolas.map((consola, index) => (
-                                                    <div className="col-md-6" key={index}>
-                                                        <h2>{consola}</h2>
-                                                    </div>
-                                                ))}
+
+                                                {
+                                                    
+                                                    Array.from(Object.keys(juego.consolas), k=>juego.consolas[k]).map((consola, index) => (
+                                                        <div className="col-md-6" key={index}>
+                                                            <h2>{consola}</h2>
+                                                        </div>
+                                                    ))
+                                                }
                                             </div>
 
                                             <Button className="btn btn-warning" onClick={() => { this.showEditModal(index) }}>Edit</Button>
