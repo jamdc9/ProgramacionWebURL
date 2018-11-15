@@ -30,7 +30,7 @@ class VideoGames extends React.Component {
         this.addJuego = this.addJuego.bind(this);
         this.editJuego = this.editJuego.bind(this);
         this.deleteJuego = this.deleteJuego.bind(this);
-    }
+    } 
     //LocalStorage
     componentDidMount() {//load the local storage data after the component renders
         /*var juegos = (typeof localStorage["juegos"] !== "undefined") ? JSON.parse(localStorage.getItem("juegos")) : [
